@@ -2,10 +2,13 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RecipesController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('/', [RecipesController::class, 'store']) ->name('recipes.store');
+Route::get('/', [RecipesController::class, 'index']) ->name('recipes.index');
+Route::get('/create', [RecipesController::class, 'create']) ->name('recipes.create');
+
+Route::get('/about', [RecipesController::class, 'about']) ->name('recipes.about');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
