@@ -6,6 +6,8 @@ use App\Http\Controllers\RecipesController;
 
 Route::post('/', [RecipesController::class, 'store']) ->name('recipes.store');
 Route::get('/', [RecipesController::class, 'index']) ->name('recipes.index');
+Route::get('/{recipe}/edit', [RecipesController::class, 'edit']) ->name('recipes.edit');
+Route::put('/{recipe}/update', [RecipesController::class, 'update']) ->name('recipes.update');
 Route::get('/create', [RecipesController::class, 'create']) ->name('recipes.create');
 
 Route::get('/about', [RecipesController::class, 'about']) ->name('recipes.about');

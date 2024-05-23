@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,28 +29,35 @@
     </div>
   </div>
 </nav>
-	  <h1>RECIPES Page</h1>
-      <div class="container-fluid min-vh-100 w-100 d-flex flex-column justify-content-center align-items-center">
-
+	  <h1>Edit Recipe</h1>
+      <form methon="put" action="{{route('recipes.update', ['recipe' => $recipe])}}" >
+      @csrf
+      @method('put')
+            <div>
+                <label>Recipe Name</label>
+                <input type="text" name="recipeName" placeholder="Recipe Name"  value="{{$recipe->recipeName}}"/>
+            </div>
+            <div>
+                <label>Recipe Content</label>
+                <input type="text" name="recipeContent" placeholder="Recipe Content"  value="{{$recipe->recipeContent}}" />
+            </div>
+            <div>
+                <label>Recipe Image URL</label>
+                <input type="text" name="imageUrl" placeholder="Recipe Image URL" value="{{$recipe->imageUrl}}" />
+            </div>
+            <div>
+            <button type="submit" formmethod="post" formaction="/">Update Recipe</button>
+            </div>
+           
+      </form>
+      @if($errors->any())
       
-      @foreach($recipes as $recipe)
-        <div class="card" style="width: 50%;">
-            <img src="{{$recipe->imageUrl}}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">{{$recipe->recipeName}}</h5>
-            <p class="card-text">{{$recipe->recipeContent}}</p>
-        </div>
-        <div class="card-body">
-            <a href="{{route('recipes.edit', ['recipe' => $recipe])}}" class="card-link">Edit Recipe</a>
-            <a href="#" class="card-link">Delete Recipe</a>
-        </div>
+        <ul>
+            @foreach($errors->all() as $error )
+            <li>{{$error}}</li>
+            @endforeach
+        </ul>
       
-       
-        </div>
-
-       
-        
-      @endforeach
-      </div>
+      @endif
   </body>
 </html>

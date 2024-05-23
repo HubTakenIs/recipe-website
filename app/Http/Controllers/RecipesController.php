@@ -33,4 +33,19 @@ class RecipesController extends Controller
         $newRecipe = Recipes::Create($data);
         return redirect(route('recipes.index'));
     }
+    public function edit(Recipes $recipe )
+    {
+        return view('recipes.edit', ['recipe' => $recipe]);
+    }
+
+    public function update(Recipes $recipe, Request $request)
+    {
+        $data = $request->validate([
+            'recipeName' => 'required',
+            'recipeContent' => 'required',
+            'imageUrl' => 'nullable'
+        ]);
+        $recipe->update($data);
+        //return redirect(route('recipes.index'));
+    }
 }
