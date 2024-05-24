@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTML 5 Boilerplate</title>
+    <title>Recipe-App</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
@@ -40,7 +40,11 @@
         </div>
         <div class="card-body">
             <a href="{{route('recipes.edit', ['recipe' => $recipe])}}" class="card-link">Edit Recipe</a>
-            <a href="#" class="card-link">Delete Recipe</a>
+            <form method="post" action="{{route('recipes.delete', ['recipe'=>$recipe])}}">
+                        @csrf
+                        @method('delete')
+                        <input type="submit" value="Delete Post"/>
+                    </form>
         </div>
       
        

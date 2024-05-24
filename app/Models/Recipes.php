@@ -13,4 +13,6 @@ class Recipes extends Model
         'recipeContent',
         'imageUrl'
     ];
+    
+
 }

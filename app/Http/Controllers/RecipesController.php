@@ -46,6 +46,11 @@ class RecipesController extends Controller
             'imageUrl' => 'nullable'
         ]);
         $recipe->update($data);
-        //return redirect(route('recipes.index'));
+        return redirect(route('recipes.index'));
+    }
+
+    public function delete(Recipes $recipe){
+        $recipe -> delete();
+        return redirect(route("recipes.index"));
     }
 }

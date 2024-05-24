@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTML 5 Boilerplate</title>
+    <title>Recipe-App</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
@@ -30,7 +30,7 @@
   </div>
 </nav>
 	  <h1>Edit Recipe</h1>
-      <form methon="put" action="{{route('recipes.update', ['recipe' => $recipe])}}" >
+      <form method="post" action="{{route('recipes.update', ['recipe' => $recipe])}}" >
       @csrf
       @method('put')
             <div>
@@ -45,8 +45,8 @@
                 <label>Recipe Image URL</label>
                 <input type="text" name="imageUrl" placeholder="Recipe Image URL" value="{{$recipe->imageUrl}}" />
             </div>
-            <div>
-            <button type="submit" formmethod="post" formaction="/">Update Recipe</button>
+
+            <button type="submit" formmethod="post" formaction="{{route('recipes.update', ['recipe' => $recipe])}}">Update Recipe</button>
             </div>
            
       </form>
