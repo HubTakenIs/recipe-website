@@ -10,6 +10,7 @@ Route::get('/', [RecipesController::class, 'index']) ->name('recipes.index');
 Route::get('/about', [RecipesController::class, 'about']) ->name('recipes.about');
 
 Route::get('/dashboard', [RecipesController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/random', [RecipesController::class, 'random']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

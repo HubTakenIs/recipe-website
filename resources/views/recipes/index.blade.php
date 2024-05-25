@@ -33,6 +33,9 @@
             </form>
         </li>
         @endif
+        <li class="nav-item">
+          <a class="nav-link" href="/random">Random</a>
+        </li>
     </div>
   </div>
 </nav>

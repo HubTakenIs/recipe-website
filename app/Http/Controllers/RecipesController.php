@@ -64,4 +64,8 @@ class RecipesController extends Controller
         $recipe -> delete();
         return redirect(route("recipes.index"));
     }
+
+    public function random(){
+        return view('recipes.random');
+    }
 }
