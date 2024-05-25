@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Recipes;
 
@@ -13,6 +14,14 @@ class RecipesController extends Controller
     {
         $recipes = Recipes::all();
         return view('recipes.index', ['recipes' => $recipes]);
+    }
+    
+    public function dashboard()
+    {
+   
+        $recipes = Recipes::where('userId', Auth::id())->get();
+
+        return view('dashboard', ['recipes' => $recipes]);
     }
     public function create()
     {
@@ -26,6 +35,7 @@ class RecipesController extends Controller
     {
         
         $data = $request->validate([
+            'userId' =>'required',
             'recipeName' => 'required',
             'recipeContent' => 'required',
             'imageUrl' => 'nullable'

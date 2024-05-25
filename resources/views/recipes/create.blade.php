@@ -33,7 +33,10 @@
       <form methon="post" action="{{route('recipes.store')}}" >
       @csrf
       @method('post')
-            <div>
+      <div>
+                <input type="hidden" name="userId"  value="{{Auth::id()}}" />
+            </div>      
+      <div>
                 <label>Recipe Name</label>
                 <input type="text" name="recipeName" placeholder="Recipe Name" />
             </div>
