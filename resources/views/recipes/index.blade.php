@@ -23,7 +23,15 @@
         <li class="nav-item">
           <a class="nav-link" href="/about">About</a>
         </li>
-  
+        <li>
+        @if(Auth::check())
+        <form style="" method="post" action="{{route('logout')}}">
+            @csrf
+            @method('post')
+                <button type="submit" class="hover:underline me-4 md:me-6">Logout</button>
+            </form>
+        </li>
+        @endif
     </div>
   </div>
 </nav>
