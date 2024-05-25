@@ -27,6 +27,16 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
+
+     public function checkemail(Request $request)
+    {
+        if (User::where('email', $request->email)->exists()) {
+            return response()->json(['message' => 'Email is already taken']);
+        }
+
+
+        return response()->json(['message' => 'Email is available']);
+    }
     public function store(Request $request): RedirectResponse
     {
         $request->validate([

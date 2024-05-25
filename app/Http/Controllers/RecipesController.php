@@ -51,6 +51,7 @@ class RecipesController extends Controller
     public function update(Recipes $recipe, Request $request)
     {
         $data = $request->validate([
+            'userId' => 'required',
             'recipeName' => 'required',
             'recipeContent' => 'required',
             'imageUrl' => 'nullable'
