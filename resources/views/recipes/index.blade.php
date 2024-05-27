@@ -10,39 +10,10 @@
    
   </head>
   <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">Recipes</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/create">Create Recipe</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about">About</a>
-        </li>
-        <li>
-        @if(Auth::check())
-        <form style="" method="post" action="{{route('logout')}}">
-            @csrf
-            @method('post')
-                <button type="submit" class="hover:underline me-4 md:me-6">Logout</button>
-            </form>
-        </li>
-        @endif
-        <li class="nav-item">
-          <a class="nav-link" href="/random">Random</a>
-        </li>
-    </div>
-  </div>
-</nav>
+    <x-mynav/>
 	  <h1>RECIPES Page</h1>
       <div class="container-fluid min-vh-100 w-100 d-flex flex-column justify-content-center align-items-center">
 
-      
       @foreach($recipes as $recipe)
         <div class="card" style="width: 50%;">
             <img src="{{$recipe->imageUrl}}" class="card-img-top" alt="...">
@@ -57,13 +28,8 @@
                         @method('delete')
                         <input type="submit" value="Delete Post"/>
                     </form>
-        </div>
-      
-       
-        </div>
-
-       
-        
+          </div>
+        </div>  
       @endforeach
       </div>
   </body>
