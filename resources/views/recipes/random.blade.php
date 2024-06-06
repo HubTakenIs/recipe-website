@@ -35,6 +35,9 @@
                 li.innerText = `${dm.value} ${di.value} `
                 ul.appendChild(li) } }
         const div = document.getElementById('ingredients')
+        while (div.firstChild) {
+            div.removeChild(div.lastChild);
+        }
         div.appendChild(ul)
         document.getElementById('instructions').innerText = instructions }
         </script>
